@@ -1,4 +1,4 @@
 import {combineReducers} from 'redux';
-import {exampleReducer} from '../containers/ExampleContainer/reducer';
+import authReducer from '../containers/LoginContainer/reducer';
 
-export default combineReducers({exampleReducer});
+export default combineReducers({currentUser: authReducer});

@@ -1,11 +1,29 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import store from './src/store';
+import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import Navigation from './src/navigation';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {store, persistor} from './src/store';
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 5,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#ffffff',
+    primary: '#519ee3',
+    error: '#ee5c43',
+    placeholder: '#cccccc',
+  },
+};
 
 const App = () => (
   <Provider store={store}>
-    <Navigation />
+    <PersistGate loading={null} persistor={persistor}>
+      <PaperProvider theme={theme}>
+        <Navigation />
+      </PaperProvider>
+    </PersistGate>
   </Provider>
 );
 

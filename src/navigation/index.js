@@ -1,16 +1,24 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {ExampleScreen} from '../screens';
-
-const Stack = createStackNavigator();
+import {useSelector} from 'react-redux';
+import AppScreens from './AppScreens';
+import AuthScreens from './AuthScreens';
+import {navigationService} from '../services';
 
 const Navigation = () => {
+  useEffect(() => {
+    return () => {
+      navigationService.isReadyRef.current = false;
+    };
+  }, []);
+  const isAuthorized = useSelector(state => state.currentUser.isAuthorized);
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Example" component={ExampleScreen} />
-      </Stack.Navigator>
+    <NavigationContainer
+      ref={navigationService.navigationRef}
+      onReady={() => {
+        navigationService.isReadyRef.current = true;
+      }}>
+      {isAuthorized ? <AppScreens /> : <AuthScreens />}
     </NavigationContainer>
   );
 };
