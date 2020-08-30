@@ -1,8 +1,9 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import store from './src/store';
-import Navigation from './src/navigation';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import Navigation from './src/navigation';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {store, persistor} from './src/store';
 
 const theme = {
   ...DefaultTheme,
@@ -18,9 +19,11 @@ const theme = {
 
 const App = () => (
   <Provider store={store}>
-    <PaperProvider theme={theme}>
-      <Navigation />
-    </PaperProvider>
+    <PersistGate loading={null} persistor={persistor}>
+      <PaperProvider theme={theme}>
+        <Navigation />
+      </PaperProvider>
+    </PersistGate>
   </Provider>
 );
 
