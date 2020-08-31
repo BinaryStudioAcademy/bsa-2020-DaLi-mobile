@@ -1,11 +1,8 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  dashboardsTitle: {
-    textAlign: 'center',
-    fontSize: 20,
+  dashboardsList: {
     marginTop: 25,
-    paddingBottom: 25,
   },
   dashboardsIcon: {
     backgroundColor: '#edf2f5',
@@ -14,7 +11,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: '#4e4d4d',
   },
-  dashboardsItem: {},
 });
 
 export default styles;

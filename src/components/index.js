@@ -7,6 +7,7 @@ import ProfileView from './ProfileView/ProfileView';
 import DashboardsView from './DashboardsView/DashboardsView';
 import VisualizationsView from './VisualizationsView/VisualizationsView';
 import VisualizationView from './VisualizationView/VisualizationView';
+import DashboardView from './DashboardView/DashboardView';
 
 export {
   ExampleComponent,
@@ -18,4 +19,5 @@ export {
   DashboardsView,
   VisualizationsView,
   VisualizationView,
+  DashboardView,
 };
