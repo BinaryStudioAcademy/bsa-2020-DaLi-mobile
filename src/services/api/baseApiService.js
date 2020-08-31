@@ -1,7 +1,7 @@
 import axios from 'axios';
 import storageService from '../storageService';
 
-const baseRequest = async request => {
+const baseRequest = async (request) => {
   try {
     return (await axios(request)).data;
   } catch (error) {
@@ -23,7 +23,7 @@ class baseAPIService {
     const response = await baseRequest({
       method: 'GET',
       url: `${this.baseURL}${endpoint}`,
-      headers: {Authorization: `Bearer: ${token}`},
+      headers: {Authorization: `Bearer ${token}`},
       params,
     });
 
@@ -35,7 +35,7 @@ class baseAPIService {
     const response = await baseRequest({
       method: 'get',
       url: `${this.baseURL}${endpoint}`,
-      headers: {Authorization: `Bearer: ${token}`},
+      headers: {Authorization: `Bearer ${token}`},
       params,
     });
 
@@ -47,7 +47,7 @@ class baseAPIService {
     const response = await baseRequest({
       method: 'post',
       url: `${this.baseURL}${endpoint}`,
-      headers: {Authorization: `Bearer: ${token}`},
+      headers: {Authorization: `Bearer ${token}`},
       data,
     });
 
@@ -59,7 +59,7 @@ class baseAPIService {
     const response = await baseRequest({
       method: 'put',
       url: `${this.baseURL}${endpoint}`,
-      headers: {Authorization: `Bearer: ${token}`},
+      headers: {Authorization: `Bearer ${token}`},
       data,
     });
 
@@ -71,7 +71,7 @@ class baseAPIService {
     const response = await baseRequest({
       method: 'patch',
       url: `${this.baseURL}${endpoint}`,
-      headers: {Authorization: `Bearer: ${token}`},
+      headers: {Authorization: `Bearer ${token}`},
       data,
     });
     return response;
@@ -82,7 +82,7 @@ class baseAPIService {
     const response = await baseRequest({
       method: 'delete',
       url: `${this.baseURL}/${endpoint}`,
-      headers: {Authorization: `Bearer: ${token}`},
+      headers: {Authorization: `Bearer ${token}`},
       params,
     });
 
