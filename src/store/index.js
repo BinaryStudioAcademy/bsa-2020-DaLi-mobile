@@ -17,6 +17,7 @@ const enhancer = composeEnhancers(applyMiddleware(saga));
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
+  whitelist: ['currentUser'],
   transforms: [createWhitelistFilter('currentUser', ['token'])],
 };
 
