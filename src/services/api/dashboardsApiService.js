@@ -9,6 +9,8 @@ class DashboardsApiService extends baseAPIService {
   }
 
   getDashboards = () => this.getData('');
+
+  getDashboard = (id) => this.getData(`/${id}`);
 }
 
 const dashboardsApiService = new DashboardsApiService();
