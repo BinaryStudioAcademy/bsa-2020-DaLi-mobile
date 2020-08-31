@@ -18,8 +18,6 @@ const VisualizationsContainer = (props) => {
     resetVisualizationsNotifications,
   } = props;
 
-  console.log(props);
-
   useEffect(() => {
     fetchVisualizations();
   }, [fetchVisualizations]);

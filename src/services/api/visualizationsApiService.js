@@ -9,6 +9,8 @@ class VisualizationsApiService extends baseAPIService {
   }
 
   getVisualizations = () => this.getData('');
+
+  getVisualization = (id) => this.getData(`/${id}`);
 }
 
 const visualizationsApiService = new VisualizationsApiService();

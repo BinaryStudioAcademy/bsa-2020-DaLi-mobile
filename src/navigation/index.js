@@ -11,7 +11,7 @@ const Navigation = () => {
       navigationService.isReadyRef.current = false;
     };
   }, []);
-  const isAuthorized = useSelector(state => state.currentUser.isAuthorized);
+  const isAuthorized = useSelector((state) => state.currentUser.isAuthorized);
   return (
     <NavigationContainer
       ref={navigationService.navigationRef}

@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: '#4e4d4d',
   },
+  visualizationsList: {
+    marginTop: 25,
+  },
 });
 
 export default styles;

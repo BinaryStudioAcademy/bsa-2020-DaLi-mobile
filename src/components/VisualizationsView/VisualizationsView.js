@@ -1,29 +1,33 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import {TouchableOpacity} from 'react-native';
 import {List} from 'react-native-paper';
 import {visualizationHelper} from '../../helpers';
 import styles from './styles';
+import {navigationService} from '../../services';
 
 const VisualizationsView = (props) => {
   const {visualizations} = props;
   return (
     <List.Section style={styles.visualizationsList}>
-      <List.Subheader style={styles.visualizationsTitle}>
-        Visualizations
-      </List.Subheader>
       {visualizations.map((visualization) => (
-        <List.Item
+        <TouchableOpacity
           key={visualization.id}
-          style={styles.visualizationsItem}
-          title={visualization.name}
-          description={visualization.description}
-          left={() => (
-            <List.Icon
-              style={styles.visualizationsIcon}
-              icon={visualizationHelper.getIcon(visualization.type)}
-            />
-          )}
-        />
+          onPress={() =>
+            navigationService.navigate('Visualization', {id: visualization.id})
+          }>
+          <List.Item
+            style={styles.visualizationsItem}
+            title={visualization.name}
+            description={visualization.description}
+            left={() => (
+              <List.Icon
+                style={styles.visualizationsIcon}
+                icon={visualizationHelper.getIcon(visualization.type)}
+              />
+            )}
+          />
+        </TouchableOpacity>
       ))}
     </List.Section>
   );
