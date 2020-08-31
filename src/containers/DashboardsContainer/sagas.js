@@ -23,6 +23,6 @@ export function* watchFetchDashboards() {
   yield takeEvery(FETCH_DASHBOARDS, fetchDashboards);
 }
 
-export default function* authSaga() {
+export default function* dashboardsSaga() {
   yield all([watchFetchDashboards()]);
 }

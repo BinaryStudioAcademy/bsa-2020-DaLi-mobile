@@ -5,6 +5,7 @@ import SuccessNotification from './SuccessNotification/SuccessNotification';
 import Loader from './Loader/Loader';
 import ProfileView from './ProfileView/ProfileView';
 import DashboardsView from './DashboardsView/DashboardsView';
+import VisualizationsView from './VisualizationsView/VisualizationsView';
 
 export {
   ExampleComponent,
@@ -14,4 +15,5 @@ export {
   Loader,
   ProfileView,
   DashboardsView,
+  VisualizationsView,
 };
