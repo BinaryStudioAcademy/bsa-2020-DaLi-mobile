@@ -2,18 +2,26 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {DashboardsScreen, ProfileScreen} from '../../screens';
+import {VisualizationsStackScreen} from './AppStackScreens';
 
 const Tab = createMaterialBottomTabNavigator();
 
 const BottomTabs = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Feed"
+      initialRouteName="Visualizations"
       shifting={true}
       sceneAnimationEnabled={false}
       activeColor="#ffffff"
       inactiveColor="#bbc0c2"
       barStyle={styles.barStyle}>
+      <Tab.Screen
+        name="Visualizations"
+        component={VisualizationsStackScreen}
+        options={{
+          tabBarIcon: 'chart-timeline-variant',
+        }}
+      />
       <Tab.Screen
         name="Dashboards"
         component={DashboardsScreen}
