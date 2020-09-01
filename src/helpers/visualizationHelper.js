@@ -10,3 +10,5 @@ export const getIcon = (visualizationType) => {
       return null;
   }
 };
+
+export const parseConfig = (config) => JSON.parse(config);
