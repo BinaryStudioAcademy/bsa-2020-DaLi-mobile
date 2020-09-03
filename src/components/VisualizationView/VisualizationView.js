@@ -8,21 +8,23 @@ const VisualizationView = (props) => {
   const [viewWidth, setViewWidth] = useState(0);
   const [viewHeight, setViewHeight] = useState(0);
   return (
-    <View
-      onLayout={(event) => {
-        const {width, height} = event.nativeEvent.layout;
-        setViewWidth(width);
-        setViewHeight(height);
-      }}
-      style={styles.visualizationContainer}>
-      {visualizationHelper.getComponent(
-        type,
-        id,
-        data,
-        config,
-        viewWidth,
-        viewHeight,
-      )}
+    <View style={styles.visualizationContainer}>
+      <View
+        onLayout={(event) => {
+          const {width, height} = event.nativeEvent.layout;
+          setViewWidth(width);
+          setViewHeight(height);
+        }}
+        style={styles.visualizationWrapper}>
+        {visualizationHelper.getComponent(
+          type,
+          id,
+          data,
+          config,
+          viewWidth,
+          viewHeight,
+        )}
+      </View>
     </View>
   );
 };
