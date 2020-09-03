@@ -1,21 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import styles from './styles';
 import {visualizationHelper} from '../../helpers';
+import {
+  VISUALIZATION_CONTAINER_WIDTH,
+  VISUALIZATION_CONTAINER_HEIGHT,
+} from '../../constants';
 
 const VisualizationView = (props) => {
   const {id, type, data, config} = props;
-  const [viewWidth, setViewWidth] = useState(0);
-  const [viewHeight, setViewHeight] = useState(0);
+  const viewWidth = VISUALIZATION_CONTAINER_WIDTH;
+  const viewHeight = VISUALIZATION_CONTAINER_HEIGHT;
   return (
     <View style={styles.visualizationContainer}>
-      <View
-        onLayout={(event) => {
-          const {width, height} = event.nativeEvent.layout;
-          setViewWidth(width);
-          setViewHeight(height);
-        }}
-        style={styles.visualizationWrapper}>
+      <View style={styles.visualizationWrapper}>
         {visualizationHelper.getComponent(
           type,
           id,
