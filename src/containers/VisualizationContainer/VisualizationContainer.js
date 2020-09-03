@@ -12,7 +12,7 @@ const VisualizationContainer = (props) => {
     isLoading,
     error,
     success,
-    data,
+    visualization,
     fetchVisualization,
     resetVisualizationNotifications,
   } = props;
@@ -27,7 +27,11 @@ const VisualizationContainer = (props) => {
       error={error}
       success={success}
       onDismiss={resetVisualizationNotifications}
-      visualization={data}
+      id={visualization?.id}
+      name={visualization?.name}
+      type={visualization?.type}
+      config={visualization?.config}
+      data={visualization?.data}
     />
   );
 };
@@ -36,7 +40,7 @@ const mapStateToProps = ({currentVisualization}) => ({
   isLoading: currentVisualization.isLoading,
   error: currentVisualization.error,
   success: currentVisualization.success,
-  data: currentVisualization.data,
+  visualization: currentVisualization.data,
 });
 
 const mapDispatchToProps = {...actions};

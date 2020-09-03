@@ -11,8 +11,14 @@ import {NOTIFICATION_DURATION} from '../../constants';
 export function* fetchVisualization({payload}) {
   try {
     const {id} = payload;
-    const data = yield call(visualizationsApiService.getVisualization, id);
-    yield put({type: FETCH_VISUALIZATION_SUCCESS, payload: {data}});
+    const data = yield call(
+      visualizationsApiService.getVisualizationWithData,
+      id,
+    );
+    yield put({
+      type: FETCH_VISUALIZATION_SUCCESS,
+      payload: {data},
+    });
   } catch (error) {
     yield put({
       type: FETCH_VISUALIZATION_ERROR,
