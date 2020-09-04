@@ -1,26 +1,24 @@
 import React from 'react';
+import {Title} from 'react-native-paper';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {View} from 'react-native';
-import {Title} from 'react-native-paper';
 import {Input, Button} from '../shared';
 import styles from './styles';
 
 const LoginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Invalid email')
-    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string().required('Required'),
 });
 
-const LoginView = props => {
+const LoginView = (props) => {
   const {onLoginSubmit} = props;
 
   return (
     <Formik
       initialValues={{email: '', password: ''}}
-      onSubmit={values => onLoginSubmit(values)}
+      onSubmit={(values) => onLoginSubmit(values)}
       validationSchema={LoginSchema}>
       {({
         values,

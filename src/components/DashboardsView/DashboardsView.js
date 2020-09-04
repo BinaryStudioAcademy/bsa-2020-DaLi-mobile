@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import {TouchableOpacity} from 'react-native';
 import {List} from 'react-native-paper';
+import {TouchableOpacity} from 'react-native';
 import {navigationService} from '../../services';
 import styles from './styles';
 

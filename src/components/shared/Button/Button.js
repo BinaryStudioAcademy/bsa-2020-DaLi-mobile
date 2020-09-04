@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Button as PaperButton, Text} from 'react-native-paper';
 import styles from './styles';
 
-const Button = props => {
+const Button = (props) => {
   const {value, ...otherProps} = props;
   return (
     <PaperButton
