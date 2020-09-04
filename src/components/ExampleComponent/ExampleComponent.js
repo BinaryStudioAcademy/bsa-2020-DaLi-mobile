@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {View} from 'react-native';
 import {Title} from 'react-native-paper';
+import {View} from 'react-native';
 import styles from './styles';
 
 const ExampleComponent = () => {

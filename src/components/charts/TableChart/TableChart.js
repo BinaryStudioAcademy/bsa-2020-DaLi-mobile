@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
-import styles from './styles';
-import {updateColumns, getRows, getRowsPages} from '../../../helpers';
 import {DataTable} from 'react-native-paper';
+import styles from './styles';
+import {
+  updateColumns,
+  getRows,
+  getRowsPages,
+} from '../../../helpers/tableHelper';
 
 const TableChart = (props) => {
   const {data, config, viewHeight} = props;
@@ -42,6 +46,7 @@ const TableChart = (props) => {
       <DataTable.Pagination
         page={page}
         numberOfPages={Math.floor(rows.length / itemsPerPage)}
+        // eslint-disable-next-line no-shadow
         onPageChange={(page) => setPage(page)}
         label={`${page * itemsPerPage + 1}-${(page + 1) * itemsPerPage} of ${
           rows.length

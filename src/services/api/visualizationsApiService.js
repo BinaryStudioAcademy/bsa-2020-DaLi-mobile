@@ -1,7 +1,7 @@
 import baseApiService from './baseApiService';
 import dbTableApiService from './dbTableApiService';
 import config from '../../config/index';
-import {visualizationHelper} from '../../helpers';
+import * as visualizationHelper from '../../helpers/visualizationHelper';
 
 const API_URL = `${config.api.url}/api/visualizations`;
 

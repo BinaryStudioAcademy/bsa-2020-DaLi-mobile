@@ -1,11 +1,11 @@
 import * as React from 'react';
+import {Avatar, List} from 'react-native-paper';
 import PropTypes from 'prop-types';
 import {View} from 'react-native';
 import {Button} from '../shared';
-import {Avatar, List} from 'react-native-paper';
 import styles from './styles';
 
-const ProfileView = props => {
+const ProfileView = (props) => {
   const {initials, firstName, lastName, email, onUserLogout} = props;
   return (
     <View style={styles.profileContainer}>

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View} from 'react-native';
 import {TextInput, Text} from 'react-native-paper';
+import {View} from 'react-native';
 import styles from './styles';
 
-const Input = props => {
+const Input = (props) => {
   const {label, isError, errors, ...otherProps} = props;
   return (
     <View style={styles.inputContainer}>

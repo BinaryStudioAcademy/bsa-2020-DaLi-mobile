@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Text} from 'react-native';
 import {Snackbar} from 'react-native-paper';
+import {Text} from 'react-native';
 import styles from './styles';
 
-const ErrorNotification = props => {
+const ErrorNotification = (props) => {
   const {message, onDismiss} = props;
 
   return (

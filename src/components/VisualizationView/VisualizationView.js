@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import styles from './styles';
-import {visualizationHelper} from '../../helpers';
+import * as visualizationHelper from '../../helpers/visualizationHelper';
 import {
   VISUALIZATION_CONTAINER_WIDTH,
   VISUALIZATION_CONTAINER_HEIGHT,
