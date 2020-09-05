@@ -1,49 +1,41 @@
 import React from 'react';
-import {Title} from 'react-native-paper';
 import {View, FlatList} from 'react-native';
-import * as visualizationHelper from '../../helpers/visualizationHelper';
-import {
-  VISUALIZATION_CONTAINER_WIDTH,
-  VISUALIZATION_CONTAINER_HEIGHT,
-} from '../../constants';
+import DashboardHeader from './DashboardHeader';
+import DashboardVisualization from './DashboardVisualization';
 import styles from './styles';
 
 const DashboardView = (props) => {
   const {dashboard, onRefresh, isFetching} = props;
-  const viewWidth = VISUALIZATION_CONTAINER_WIDTH;
-  const viewHeight = VISUALIZATION_CONTAINER_HEIGHT;
-
-  const DashboardHeader = () => (
-    <View style={styles.dashboardHeader}>
-      <Title style={styles.dashboardHeaderTitle}>{dashboard.name}</Title>
-    </View>
+  const header = (
+    <DashboardHeader
+      dashboardName={dashboard?.name}
+      dashboardDescription={dashboard?.description}
+    />
   );
 
   return (
     dashboard && (
-      <View style={styles.visualizationContainer}>
+      <View style={styles.dashboardVisualizationList}>
         <FlatList
           data={dashboard.Visualizations}
           renderItem={({item}) => {
             return (
-              <View style={styles.visualizationWrapper}>
-                {visualizationHelper.getComponent(
-                  item.type,
-                  item.id,
-                  item.data,
-                  JSON.parse(item.config),
-                  viewWidth,
-                  viewHeight,
-                )}
-              </View>
+              <DashboardVisualization
+                name={item.name}
+                description={item.description}
+                type={item.type}
+                id={item.id}
+                data={item.data}
+                config={JSON.parse(item.config)}
+              />
             );
           }}
-          ListHeaderComponent={DashboardHeader}
+          ListHeaderComponent={header}
           keyExtractor={(visualization) =>
             `${dashboard.id} - ${visualization.id}`
           }
           onRefresh={onRefresh}
-          refreshing={dashboard.Visualizations && isFetching}
+          refreshing={isFetching}
         />
       </View>
     )
