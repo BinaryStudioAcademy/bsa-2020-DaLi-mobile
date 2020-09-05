@@ -21,6 +21,8 @@ const DashboardContainer = (props) => {
     fetchDashboard(route.params.id);
   }, [fetchDashboard, route.params.id]);
 
+  const onRefresh = () => fetchDashboard(route.params.id);
+
   return (
     <DashboardViewWithNotifications
       isLoading={isLoading}
@@ -28,6 +30,8 @@ const DashboardContainer = (props) => {
       success={success}
       onDismiss={resetVisualizationNotifications}
       dashboard={data}
+      onRefresh={onRefresh}
+      isFetching={isLoading}
     />
   );
 };
