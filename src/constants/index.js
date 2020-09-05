@@ -7,3 +7,9 @@ export const VISUALIZATION_CONTAINER_WIDTH =
 
 export const VISUALIZATION_CONTAINER_HEIGHT =
   Dimensions.get('window').width - 40;
+
+export const DASHBOARD_VISUALIZATION_WIDTH =
+  Dimensions.get('window').width - 40;
+
+export const DASHBOARD_VISUALIZATION_HEIGHT =
+  Dimensions.get('window').width - 40;

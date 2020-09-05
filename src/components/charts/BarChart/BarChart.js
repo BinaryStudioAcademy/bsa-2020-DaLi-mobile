@@ -17,7 +17,9 @@ const BarChart = (props) => {
   const {id, data, config, viewWidth, viewHeight} = props;
   const sortedData = data.sort(compareValues(config.axisData.XAxis.key));
 
-  const bars = config.axisData.YAxis.key.map((YAxisKey, index) => {
+  const YAxis = [config.axisData.YAxis.key];
+
+  const bars = YAxis.map((YAxisKey, index) => {
     const xDataRange = {
       min: sortedData[0][config.axisData.XAxis.key],
       max: sortedData[data.length - 1][config.axisData.XAxis.key],
@@ -61,7 +63,7 @@ const BarChart = (props) => {
       theme={VictoryTheme.material}
       width={viewWidth}
       height={viewHeight}>
-      <VictoryGroup offset={5} colorScale={config.display.color}>
+      <VictoryGroup offset={5} colorScale={[config.display.color]}>
         {bars}
       </VictoryGroup>
     </VictoryChart>
