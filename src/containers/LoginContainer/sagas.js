@@ -22,6 +22,7 @@ export function* loginSaga({payload}) {
     yield put({type: LOGIN_USER_SUCCESS, payload: {response}});
   } catch (error) {
     yield put({type: LOGIN_USER_ERROR, payload: {error: error.message}});
+    yield call(storageService.remove, 'token');
     yield delay(NOTIFICATION_DURATION);
     yield put({type: RESET_AUTH_NOTIFICATIONS});
   }

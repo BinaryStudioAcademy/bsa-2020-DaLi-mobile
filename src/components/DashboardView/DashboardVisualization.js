@@ -25,7 +25,7 @@ const DashboardVisualization = (props) => {
         )}
       </View>
       <View style={styles.dashboardVisualization}>
-        {visualizationHelper.getComponent(
+        {visualizationHelper.getDashboardComponent(
           type,
           id,
           data,

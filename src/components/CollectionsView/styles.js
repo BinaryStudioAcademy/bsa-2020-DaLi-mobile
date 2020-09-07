@@ -1,8 +1,8 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  collectionItem: {
-    marginTop: 25,
+  collectionsList: {
+    marginVertical: 20,
   },
   collectionIcon: {
     backgroundColor: '#edf2f5',
