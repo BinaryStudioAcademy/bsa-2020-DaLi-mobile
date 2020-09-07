@@ -10,19 +10,7 @@ class VisualizationsApiService extends baseApiService {
     super(API_URL);
   }
 
-  getVisualizations = () => this.getData('');
-
   getVisualization = async (id) => {
-    const {
-      config: visualizationConfig,
-      tableId,
-      ...visualization
-    } = await this.getData(`/${id}`);
-    const parsedConfig = visualizationHelper.parseConfig(visualizationConfig);
-    return {...visualization, config: parsedConfig};
-  };
-
-  getVisualizationWithData = async (id) => {
     const {
       config: visualizationConfig,
       tableId,

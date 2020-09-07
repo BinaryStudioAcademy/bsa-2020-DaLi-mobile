@@ -2,7 +2,7 @@ import {API_URL} from 'react-native-dotenv';
 
 const config = {
   api: {
-    url: API_URL,
+    url: 'http://localhost:5000',
   },
 };
 

@@ -6,24 +6,12 @@ import {
 
 const styles = StyleSheet.create({
   visualizationContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: '100%',
+    backgroundColor: '#fff',
   },
   visualizationWrapper: {
     width: VISUALIZATION_CONTAINER_WIDTH,
     height: VISUALIZATION_CONTAINER_HEIGHT,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.18,
-    shadowRadius: 1.0,
-
-    elevation: 1,
-    // background color must be set
-    backgroundColor: '#fff',
   },
 });
 

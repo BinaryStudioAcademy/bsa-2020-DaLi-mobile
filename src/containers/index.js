@@ -1,17 +1,15 @@
-import ExampleContainer from './ExampleContainer/ExampleContainer';
 import LoginContainer from './LoginContainer/LoginContainer';
 import ProfileContainer from './ProfileContainer/ProfileContainer';
-import DashboardsContainer from './DashboardsContainer/DashboardsContainer';
-import VisualizationsContainer from './VisualizationsContainer/VisualizationsContainer';
+import CollectionsContainer from './CollectionsContainer/CollectionsContainer';
+import CollectionContainer from './CollectionContainer/CollectionContainer';
 import VisualizationContainer from './VisualizationContainer/VisualizationContainer';
 import DashboardContainer from './DashboardContainer/DashboardContainer';
 
 export {
-  ExampleContainer,
   LoginContainer,
   ProfileContainer,
-  DashboardsContainer,
-  VisualizationsContainer,
   VisualizationContainer,
   DashboardContainer,
+  CollectionsContainer,
+  CollectionContainer,
 };

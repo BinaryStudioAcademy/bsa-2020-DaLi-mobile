@@ -34,7 +34,8 @@ const LineChart = (props) => {
     <VictoryChart
       theme={VictoryTheme.material}
       width={viewWidth}
-      height={viewHeight}>
+      height={viewHeight}
+      padding={45}>
       {lines}
     </VictoryChart>
   );

@@ -1,26 +1,27 @@
 import React from 'react';
-import {View, FlatList} from 'react-native';
-import DashboardHeader from './DashboardHeader';
+import {View, RefreshControl, SafeAreaView, ScrollView} from 'react-native';
 import DashboardVisualization from './DashboardVisualization';
+import {EmptyScreen, Header} from '../shared';
 import styles from './styles';
 
 const DashboardView = (props) => {
   const {dashboard, onRefresh, isFetching} = props;
-  const header = (
-    <DashboardHeader
-      dashboardName={dashboard?.name}
-      dashboardDescription={dashboard?.description}
-    />
-  );
 
   return (
     dashboard && (
-      <View style={styles.dashboardVisualizationList}>
-        <FlatList
-          data={dashboard.Visualizations}
-          renderItem={({item}) => {
-            return (
+      <SafeAreaView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={isFetching} onRefresh={onRefresh} />
+          }>
+          <Header name={dashboard?.name} description={dashboard?.description} />
+          {!dashboard.Visualizations.length && (
+            <EmptyScreen title={'Dashboard is empty'} />
+          )}
+          <View style={styles.dashboardVisualizationList}>
+            {dashboard.Visualizations.map((item) => (
               <DashboardVisualization
+                key={`${dashboard.id} - ${item.id}`}
                 name={item.name}
                 description={item.description}
                 type={item.type}
@@ -28,16 +29,10 @@ const DashboardView = (props) => {
                 data={item.data}
                 config={JSON.parse(item.config)}
               />
-            );
-          }}
-          ListHeaderComponent={header}
-          keyExtractor={(visualization) =>
-            `${dashboard.id} - ${visualization.id}`
-          }
-          onRefresh={onRefresh}
-          refreshing={isFetching}
-        />
-      </View>
+            ))}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     )
   );
 };
