@@ -4,6 +4,7 @@ import * as navigationService from './navigationService';
 import dashboardsApiService from './api/dashboardsApiService';
 import visualizationsApiService from './api/visualizationsApiService';
 import dbTableApiService from './api/dbTableApiService';
+import collectionsApiService from './api/collectionsApiService';
 
 export {
   storageService,
@@ -12,4 +13,5 @@ export {
   dashboardsApiService,
   visualizationsApiService,
   dbTableApiService,
+  collectionsApiService,
 };

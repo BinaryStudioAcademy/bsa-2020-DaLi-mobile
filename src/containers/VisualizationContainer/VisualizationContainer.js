@@ -21,6 +21,8 @@ const VisualizationContainer = (props) => {
     fetchVisualization(route.params.id);
   }, [fetchVisualization, route.params.id]);
 
+  const onRefresh = () => fetchVisualization(route.params.id);
+
   return (
     <VisualizationViewWithNotifications
       isLoading={isLoading}
@@ -32,6 +34,9 @@ const VisualizationContainer = (props) => {
       type={visualization?.type}
       config={visualization?.config}
       data={visualization?.data}
+      description={visualization?.description}
+      refreshing={isLoading}
+      onRefresh={onRefresh}
     />
   );
 };

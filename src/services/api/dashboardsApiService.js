@@ -8,8 +8,6 @@ class DashboardsApiService extends baseAPIService {
     super(API_URL);
   }
 
-  getDashboards = () => this.getData('');
-
   getDashboard = (id) => this.getData(`/${id}`);
 }
 

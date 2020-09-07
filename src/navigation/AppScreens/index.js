@@ -2,10 +2,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {ProfileScreen} from '../../screens';
-import {
-  VisualizationsStackScreen,
-  DashboardsStackScreen,
-} from './AppStackScreens';
+import {AnalyticsStackScreen} from './AppStackScreens';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -19,19 +16,13 @@ const BottomTabs = () => {
       inactiveColor="#bbc0c2"
       barStyle={styles.barStyle}>
       <Tab.Screen
-        name="Visualizations"
-        component={VisualizationsStackScreen}
+        name="Analytics"
+        component={AnalyticsStackScreen}
         options={{
           tabBarIcon: 'chart-timeline-variant',
         }}
       />
-      <Tab.Screen
-        name="Dashboards"
-        component={DashboardsStackScreen}
-        options={{
-          tabBarIcon: 'view-dashboard',
-        }}
-      />
+
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}

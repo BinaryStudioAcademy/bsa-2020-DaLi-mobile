@@ -62,7 +62,8 @@ const BarChart = (props) => {
     <VictoryChart
       theme={VictoryTheme.material}
       width={viewWidth}
-      height={viewHeight}>
+      height={viewHeight}
+      padding={45}>
       <VictoryGroup offset={5} colorScale={[config.display.color]}>
         {bars}
       </VictoryGroup>

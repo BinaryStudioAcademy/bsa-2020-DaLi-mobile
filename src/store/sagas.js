@@ -1,15 +1,15 @@
 import {all} from 'redux-saga/effects';
 import authSaga from '../containers/LoginContainer/sagas';
-import dashboardsSaga from '../containers/DashboardsContainer/sagas';
-import visualizationsSaga from '../containers/VisualizationsContainer/sagas';
+import collectionsSaga from '../containers/CollectionsContainer/sagas';
+import currentCollectionSaga from '../containers/CollectionContainer/sagas';
 import currentVisualizationSaga from '../containers/VisualizationContainer/sagas';
 import currentDashboardSaga from '../containers/DashboardContainer/sagas';
 
 export function* rootSaga() {
   yield all([
     authSaga(),
-    dashboardsSaga(),
-    visualizationsSaga(),
+    collectionsSaga(),
+    currentCollectionSaga(),
     currentVisualizationSaga(),
     currentDashboardSaga(),
   ]);
