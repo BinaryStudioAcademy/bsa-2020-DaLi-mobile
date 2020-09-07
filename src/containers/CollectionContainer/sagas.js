@@ -1,10 +1,12 @@
-import {put, call, takeEvery, all} from 'redux-saga/effects';
+import {put, call, takeEvery, all, delay} from 'redux-saga/effects';
 import {
   FETCH_COLLECTION,
   FETCH_COLLECTION_ERROR,
   FETCH_COLLECTION_SUCCESS,
+  RESET_COLLECTION_NOTIFICATIONS,
 } from './actionTypes';
 import {collectionsApiService} from '../../services';
+import {NOTIFICATION_DURATION} from '../../constants';
 
 export function* fetchCollectionSaga({payload}) {
   try {
@@ -16,8 +18,9 @@ export function* fetchCollectionSaga({payload}) {
     const data = {dashboards, visualizations, ...collection};
     yield put({type: FETCH_COLLECTION_SUCCESS, payload: {data}});
   } catch (error) {
-    console.log('error');
     yield put({type: FETCH_COLLECTION_ERROR, payload: {error: error.message}});
+    yield delay(NOTIFICATION_DURATION);
+    yield put({type: RESET_COLLECTION_NOTIFICATIONS});
   }
 }
 

@@ -13,7 +13,7 @@ const DashboardsContainer = (props) => {
     visualizations,
     dashboards,
     fetchCollection,
-    resetCollectionsNotifications,
+    resetCollectionNotifications,
     route,
     name,
     description,
@@ -29,7 +29,7 @@ const DashboardsContainer = (props) => {
     <CollectionsViewWithNotifications
       isLoading={isLoading}
       error={error}
-      onDismiss={resetCollectionsNotifications}
+      onDismiss={resetCollectionNotifications}
       visualizations={visualizations}
       dashboards={dashboards}
       name={name}

@@ -2,6 +2,7 @@ import {
   FETCH_COLLECTIONS,
   FETCH_COLLECTIONS_SUCCESS,
   FETCH_COLLECTIONS_ERROR,
+  RESET_COLLECTIONS_NOTIFICATIONS,
 } from './actionTypes';
 
 const initialState = {
@@ -34,6 +35,13 @@ const collectionsReducer = (state = initialState, {type, payload}) => {
         ...state,
         isLoading: false,
         data,
+      };
+    }
+
+    case RESET_COLLECTIONS_NOTIFICATIONS: {
+      return {
+        ...state,
+        error: null,
       };
     }
 
