@@ -14,10 +14,11 @@ const CollectionsView = (props) => {
   return (
     <SafeAreaView>
       <ScrollView
+        style={styles.collectionsList}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
-        <List.Section style={styles.dashboardsList}>
+        <List.Section>
           {collections.map((collection) => (
             <TouchableOpacity
               key={collection.id}
@@ -25,12 +26,11 @@ const CollectionsView = (props) => {
                 navigationService.navigate('Collection', {id: collection.id})
               }>
               <List.Item
-                style={styles.collectionsItem}
                 title={collection.name}
                 description={collection.description}
                 left={() => (
                   <List.Icon
-                    style={styles.collectionsIcon}
+                    style={styles.collectionIcon}
                     icon="image-multiple"
                   />
                 )}
