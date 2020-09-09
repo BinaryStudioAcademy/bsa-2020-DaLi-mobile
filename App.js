@@ -1,5 +1,6 @@
 import React from 'react';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import {LogBox} from 'react-native';
 import Navigation from './src/navigation';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -16,6 +17,8 @@ const theme = {
     placeholder: '#cccccc',
   },
 };
+
+LogBox.ignoreAllLogs();
 
 const App = () => (
   <Provider store={store}>
