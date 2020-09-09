@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   collectionIcon: {
-    backgroundColor: '#edf2f5',
+    backgroundColor: '#e7f8ef',
     borderRadius: 5,
     borderColor: '#d5d9dc',
     borderWidth: 1,
