@@ -13,7 +13,7 @@ const LineChart = (props) => {
     curveLinear: 'linear',
     curveStep: 'step',
   };
-  const lines = [config.axisData.YAxis.key].map((YAxisKey, index) => {
+  const lines = config.axisData.YAxis.key.map((YAxisKey, index) => {
     const showValues = config.display.showDataPointsValues ? YAxisKey : null;
     return (
       <VictoryLine
@@ -22,7 +22,7 @@ const LineChart = (props) => {
         x={config.axisData.XAxis.key}
         y={YAxisKey}
         style={{
-          data: {stroke: config.display.color},
+          data: {stroke: config.display.color[index]},
         }}
         interpolation={lineTypes[config.display.lineType[index]]}
         labels={({datum}) => datum[showValues]}

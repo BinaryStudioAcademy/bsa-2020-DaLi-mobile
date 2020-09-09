@@ -1,8 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {
-  DASHBOARD_VISUALIZATION_HEIGHT,
-  DASHBOARD_VISUALIZATION_WIDTH,
-} from '../../constants';
+import {DASHBOARD_VISUALIZATION_WIDTH} from '../../constants';
 
 const styles = StyleSheet.create({
   dashboardVisualizationList: {
@@ -29,7 +26,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#f3f4f4',
     borderBottomWidth: 1,
     paddingBottom: 10,
-    marginBottom: 10,
   },
 
   dashboardVisualizationName: {
@@ -40,10 +36,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: 'rgba(0, 0, 0, 0.54)',
     marginBottom: 10,
-  },
-
-  dashboardVisualization: {
-    height: DASHBOARD_VISUALIZATION_HEIGHT,
   },
 });
 

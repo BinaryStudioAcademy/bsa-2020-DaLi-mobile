@@ -1,73 +1,79 @@
 import React from 'react';
-import * as d3 from 'd3';
+import {ScrollView, View} from 'react-native';
 import {
   VictoryBar,
   VictoryChart,
   VictoryGroup,
   VictoryTheme,
-  VictoryLabel,
+  VictoryLine,
+  VictoryAxis,
 } from 'victory-native';
-import {
-  compareValues,
-  calcMinYDataValue,
-  calcMaxYDataValue,
-} from '../../../helpers/utils';
+import {ChartLegend} from '../ChartComponents';
+import * as ChartHelper from '../../../helpers/chartHelper';
 
 const BarChart = (props) => {
-  const {id, data, config, viewWidth, viewHeight} = props;
-  const sortedData = data.sort(compareValues(config.axisData.XAxis.key));
+  const {id, data, config, viewHeight} = props;
 
-  const YAxis = [config.axisData.YAxis.key];
+  const chartPadding = 50;
+  const YAxis = config.axisData.YAxis.key;
+  const XAxis = config.axisData.XAxis.key;
+  const barsColors = config.display.color;
+  const barWidth = 25;
+  const barPadding = 25;
+  const offset = barWidth + barPadding;
+  const chartWidth =
+    data.length * (barWidth + barPadding) * YAxis.length + chartPadding * 2;
+
+  const goalLineData = ChartHelper.createGoalLineData(
+    data,
+    config.display.goal.value,
+  );
 
   const bars = YAxis.map((YAxisKey, index) => {
-    const xDataRange = {
-      min: sortedData[0][config.axisData.XAxis.key],
-      max: sortedData[data.length - 1][config.axisData.XAxis.key],
-    };
-    const yDataRange = {
-      min: calcMinYDataValue(
-        d3.min(data, (d) => d[YAxisKey]),
-        config.display.goal,
-      ),
-      max: calcMaxYDataValue(
-        d3.max(data, (d) => d[YAxisKey]),
-        config.display.goal,
-      ),
-    };
-
-    const xScale = d3
-      .scaleBand()
-      .domain(data.map((d) => d[config.axisData.XAxis.key]))
-      .range([xDataRange.min, xDataRange.max])
-      .padding(0.1);
-
-    const showValues = config.display.showDataPointsValues ? YAxisKey : null;
+    const bardData = ChartHelper.createBarData(data, XAxis, YAxisKey);
 
     return (
       <VictoryBar
+        style={{data: {width: barWidth}}}
         key={`${id} - ${index}`}
-        data={data}
-        x={xScale}
-        y={YAxisKey}
-        domain={{
-          y: [yDataRange.min, yDataRange.max],
-        }}
-        labels={({datum}) => datum[showValues]}
-        labelComponent={<VictoryLabel dy={-5} />}
+        data={bardData}
       />
     );
   });
 
   return (
-    <VictoryChart
-      theme={VictoryTheme.material}
-      width={viewWidth}
-      height={viewHeight}
-      padding={45}>
-      <VictoryGroup offset={5} colorScale={[config.display.color]}>
-        {bars}
-      </VictoryGroup>
-    </VictoryChart>
+    <View>
+      <ChartLegend yAxis={YAxis} colors={barsColors} />
+      <ScrollView horizontal={true}>
+        <VictoryChart
+          theme={VictoryTheme.material}
+          width={chartWidth}
+          height={viewHeight}
+          padding={chartPadding}>
+          <VictoryGroup
+            padding={barPadding}
+            offset={offset}
+            colorScale={barsColors}>
+            {bars}
+          </VictoryGroup>
+
+          {config.display.goal.display && (
+            <VictoryLine
+              style={{data: {stroke: 'grey', strokeDasharray: [5, 5]}}}
+              data={goalLineData}
+            />
+          )}
+
+          <VictoryAxis dependentAxis style={{grid: {stroke: 'none'}}} />
+          <VictoryAxis
+            style={{
+              grid: {stroke: 'none'},
+              tickLabels: {fontSize: 7, fontWeight: 'bold', angle: -20},
+            }}
+          />
+        </VictoryChart>
+      </ScrollView>
+    </View>
   );
 };
 
