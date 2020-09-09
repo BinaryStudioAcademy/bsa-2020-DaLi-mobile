@@ -30,13 +30,14 @@ const BarChart = (props) => {
   );
 
   const bars = YAxis.map((YAxisKey, index) => {
-    const bardData = ChartHelper.createBarData(data, XAxis, YAxisKey);
-
+    const bardData = ChartHelper.createChartData(data, XAxis, YAxisKey);
+    const yMinMax = ChartHelper.findYMinMax(bardData);
     return (
       <VictoryBar
         style={{data: {width: barWidth}}}
         key={`${id} - ${index}`}
         data={bardData}
+        domain={{y: yMinMax}}
       />
     );
   });
