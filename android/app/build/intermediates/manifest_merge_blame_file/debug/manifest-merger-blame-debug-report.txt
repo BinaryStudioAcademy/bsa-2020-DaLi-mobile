@@ -51,11 +51,11 @@
 30        android:usesCleartextTraffic="true" >
 30-->C:\Users\Zhanna\Documents\bsa-2020-DaLi-mobile\android\app\src\main\AndroidManifest.xml:8:7-42
 31        <meta-data
-31-->C:\Users\Zhanna\Documents\bsa-2020-DaLi-mobile\android\app\src\main\AndroidManifest.xml:14:7-16:56
+31-->C:\Users\Zhanna\Documents\bsa-2020-DaLi-mobile\android\app\src\main\AndroidManifest.xml:14:7-16:66
 32            android:name="com.google.android.geo.API_KEY"
 32-->C:\Users\Zhanna\Documents\bsa-2020-DaLi-mobile\android\app\src\main\AndroidManifest.xml:15:9-54
-33            android:value="Your Google maps API Key Here" />
-33-->C:\Users\Zhanna\Documents\bsa-2020-DaLi-mobile\android\app\src\main\AndroidManifest.xml:16:9-54
+33            android:value="AIzaSyDDqI4sXO6zvU1PZJyZoUTV6DISqOUYclg" />
+33-->C:\Users\Zhanna\Documents\bsa-2020-DaLi-mobile\android\app\src\main\AndroidManifest.xml:16:9-64
 34
 35        <uses-library
 35-->C:\Users\Zhanna\Documents\bsa-2020-DaLi-mobile\android\app\src\main\AndroidManifest.xml:17:7-85

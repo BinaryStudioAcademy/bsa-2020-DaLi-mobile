@@ -3,6 +3,7 @@ import {
   BarChart,
   LineChart,
   TableChart,
+  MapChart,
   TableDashboardChart,
 } from '../components/charts';
 
@@ -13,6 +14,8 @@ export const getIcon = (visualizationType) => {
     case 'LINE_CHART':
       return 'chart-line';
     case 'TABLE':
+      return 'table';
+    case 'MAP':
       return 'table';
     default:
       return null;
@@ -35,6 +38,8 @@ export const getComponent = (
       return <LineChart {...componentProps} />;
     case 'TABLE':
       return <TableChart {...componentProps} />;
+    case 'MAP':
+      return <MapChart {...componentProps} />;
     default:
       return null;
   }
@@ -55,6 +60,8 @@ export const getDashboardComponent = (
     case 'LINE_CHART':
       return <LineChart {...componentProps} />;
     case 'TABLE':
+      return <MapChart {...componentProps} />;
+    case 'MAP':
       return <TableDashboardChart {...componentProps} />;
     default:
       return null;
