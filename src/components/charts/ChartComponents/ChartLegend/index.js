@@ -10,17 +10,15 @@ const ChartLegend = (props) => {
 
   return (
     <View style={styles.chartLegendContainer}>
-      {labels.length > 1 ? (
-        <VictoryLegend
-          style={{
-            labels: {fontSize: 12},
-          }}
-          orientation="horizontal"
-          gutter={20}
-          colorScale={colors}
-          data={labels}
-        />
-      ) : null}
+      <VictoryLegend
+        style={{
+          labels: {fontSize: 12},
+        }}
+        orientation="horizontal"
+        gutter={20}
+        colorScale={colors}
+        data={labels}
+      />
     </View>
   );
 };
