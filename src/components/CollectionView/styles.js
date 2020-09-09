@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   collectionItemIcon: {
-    backgroundColor: '#edf2f5',
+    backgroundColor: '#e7f8ef',
     borderRadius: 5,
     borderColor: '#d5d9dc',
     borderWidth: 1,
@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   collectionTabIndicator: {
-    backgroundColor: '#519ee3',
+    backgroundColor: '#5ed2a2',
   },
   collectionTabLabelFocused: {
-    color: '#519ee3',
+    color: '#5ed2a2',
   },
   collectionScene: {
     flex: 1,
