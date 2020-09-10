@@ -59,9 +59,9 @@ export const getDashboardComponent = (
       return <BarChart {...componentProps} />;
     case 'LINE_CHART':
       return <LineChart {...componentProps} />;
-    case 'TABLE':
-      return <MapChart {...componentProps} />;
     case 'MAP':
+      return <MapChart {...componentProps} />;
+    case 'TABLE':
       return <TableDashboardChart {...componentProps} />;
     default:
       return null;
