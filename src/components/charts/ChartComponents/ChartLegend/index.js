@@ -8,7 +8,7 @@ const ChartLegend = (props) => {
 
   const labels = yAxis.map((axis) => ({name: axis}));
 
-  return (
+  return labels.length > 1 ? (
     <View style={styles.chartLegendContainer}>
       <VictoryLegend
         style={{
@@ -20,7 +20,7 @@ const ChartLegend = (props) => {
         data={labels}
       />
     </View>
-  );
+  ) : null;
 };
 
 export default ChartLegend;

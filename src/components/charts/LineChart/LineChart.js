@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, View, Text} from 'react-native';
 import {
   VictoryChart,
   VictoryGroup,
@@ -9,6 +9,7 @@ import {
 } from 'victory-native';
 import {ChartLegend} from '../ChartComponents';
 import * as ChartHelper from '../../../helpers/chartHelper';
+import styles from './styles';
 
 const LineChart = (props) => {
   const {id, data, config, viewHeight} = props;
@@ -44,30 +45,46 @@ const LineChart = (props) => {
   return (
     <View>
       <ChartLegend yAxis={YAxis} colors={linesColors} />
-      <ScrollView horizontal={true}>
-        <VictoryChart
-          theme={VictoryTheme.material}
-          width={chartWidth}
-          height={viewHeight}
-          padding={chartPadding}>
-          <VictoryGroup colorScale={linesColors}>{lines}</VictoryGroup>
+      <View style={styles.chartWrapper}>
+        {config.axisData.YAxis.displayLabel && (
+          <View style={styles.yAxisLabelContainer}>
+            <Text style={styles.yAxisLabelTitle}>
+              {config.axisData.YAxis.label[0]}
+            </Text>
+          </View>
+        )}
+        <ScrollView horizontal={true}>
+          <VictoryChart
+            theme={VictoryTheme.material}
+            width={chartWidth}
+            height={viewHeight}
+            padding={chartPadding}>
+            <VictoryGroup colorScale={linesColors}>{lines}</VictoryGroup>
 
-          {config.display.goal.display && (
-            <VictoryLine
-              style={{data: {stroke: 'grey', strokeDasharray: [5, 5]}}}
-              data={goalLineData}
+            {config.display.goal.display && (
+              <VictoryLine
+                style={{data: {stroke: 'grey', strokeDasharray: [5, 5]}}}
+                data={goalLineData}
+              />
+            )}
+            <VictoryAxis dependentAxis style={{grid: {stroke: 'none'}}} />
+            <VictoryAxis
+              fixLabelOverlap
+              style={{
+                grid: {stroke: 'none'},
+                tickLabels: {fontSize: 7, fontWeight: 'bold', angle: -20},
+              }}
             />
-          )}
-          <VictoryAxis dependentAxis style={{grid: {stroke: 'none'}}} />
-          <VictoryAxis
-            fixLabelOverlap
-            style={{
-              grid: {stroke: 'none'},
-              tickLabels: {fontSize: 7, fontWeight: 'bold', angle: -20},
-            }}
-          />
-        </VictoryChart>
-      </ScrollView>
+          </VictoryChart>
+        </ScrollView>
+      </View>
+      {config.axisData.XAxis.displayLabel && (
+        <View style={styles.yAxisLabelContainer}>
+          <Text style={styles.xAxisLabelTitle}>
+            {config.axisData.XAxis.label}
+          </Text>
+        </View>
+      )}
     </View>
   );
 };
