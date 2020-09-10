@@ -13,7 +13,7 @@ const BottomTabs = () => {
       shifting={true}
       sceneAnimationEnabled={false}
       activeColor="#ffffff"
-      inactiveColor="#bbc0c2"
+      inactiveColor="#afaeaf"
       barStyle={styles.barStyle}>
       <Tab.Screen
         name="Analytics"
@@ -36,7 +36,7 @@ const BottomTabs = () => {
 
 const styles = StyleSheet.create({
   barStyle: {
-    backgroundColor: '#519ee3',
+    backgroundColor: '#5ed2a2',
   },
 });
 
