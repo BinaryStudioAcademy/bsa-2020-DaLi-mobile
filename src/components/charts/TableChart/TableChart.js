@@ -1,6 +1,7 @@
 import React from 'react';
-import {DataTable} from 'react-native-paper';
+import {DataTable, Text} from 'react-native-paper';
 import {updateColumns, getRows} from '../../../helpers/tableHelper';
+import styles from './styles';
 
 const TableChart = (props) => {
   const {data, config} = props;
@@ -14,7 +15,7 @@ const TableChart = (props) => {
           <DataTable.Title
             key={columnHeader.id}
             numeric={columnHeader.type === 'number'}>
-            {columnHeader.title}
+            <Text style={styles.cellTitle}>{columnHeader.title}</Text>
           </DataTable.Title>
         ))}
       </DataTable.Header>
@@ -26,7 +27,7 @@ const TableChart = (props) => {
                 <DataTable.Cell
                   numeric={updatedColumns[innerIndex].type === 'number'}
                   key={innerIndex}>
-                  {row[key]}
+                  <Text style={styles.cellValue}>{row[key]}</Text>
                 </DataTable.Cell>
               );
             })}
