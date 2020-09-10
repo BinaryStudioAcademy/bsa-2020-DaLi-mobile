@@ -20,9 +20,10 @@ const BarChart = (props) => {
   const barsColors = config.display.color;
   const barWidth = 25;
   const barPadding = 25;
-  const offset = barWidth + barPadding;
+  const offset = config.display.stacked ? 0 : barWidth + barPadding;
+  const barsCount = config.display.stacked ? 1 : YAxis.length;
   const chartWidth =
-    data.length * (barWidth + barPadding) * YAxis.length + chartPadding * 2;
+    data.length * (barWidth + barPadding) * barsCount + chartPadding * 2;
 
   const goalLineData = ChartHelper.createGoalLineData(
     data,
@@ -37,6 +38,7 @@ const BarChart = (props) => {
         style={{data: {width: barWidth}}}
         key={`${id} - ${index}`}
         data={bardData}
+        domainPadding={config.display.stacked && barPadding}
         domain={{y: yMinMax}}
       />
     );

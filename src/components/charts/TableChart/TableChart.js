@@ -1,12 +1,21 @@
 import React from 'react';
 import {DataTable, Text} from 'react-native-paper';
-import {updateColumns, getRows} from '../../../helpers/tableHelper';
+import {
+  updateColumns,
+  getRows,
+  formatDateForSummarize,
+} from '../../../helpers/tableHelper';
 import styles from './styles';
 
 const TableChart = (props) => {
   const {data, config} = props;
-  const updatedColumns = updateColumns(config.columns);
-  const rows = getRows(data, updatedColumns);
+  const columns = config.isSummarize ? config.summarizeColumns : config.columns;
+  const dataWithFormatDateForSummarize = formatDateForSummarize(data, config);
+  const updatedColumns = updateColumns(columns);
+  const rows = getRows(
+    config.isSummarize ? dataWithFormatDateForSummarize : data,
+    updatedColumns,
+  );
 
   return (
     <DataTable>

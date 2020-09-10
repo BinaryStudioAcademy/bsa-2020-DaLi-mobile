@@ -4,13 +4,20 @@ import {
   updateColumns,
   getRows,
   getRowsPages,
+  formatDateForSummarize,
 } from '../../../helpers/tableHelper';
 import styles from './styles';
 
 const TableDashboardChart = (props) => {
   const {data, config, viewHeight} = props;
-  const updatedColumns = updateColumns(config.columns);
-  const rows = getRows(data, updatedColumns);
+  const columns = config.isSummarize ? config.summarizeColumns : config.columns;
+  const dataWithFormatDateForSummarize = formatDateForSummarize(data, config);
+  const updatedColumns = updateColumns(columns);
+
+  const rows = getRows(
+    config.isSummarize ? dataWithFormatDateForSummarize : data,
+    updatedColumns,
+  );
 
   const [page, setPage] = useState(0);
   const itemsPerPage = Math.floor((viewHeight - (48 + 48)) / 48);
