@@ -16,7 +16,7 @@ export const getIcon = (visualizationType) => {
     case 'TABLE':
       return 'table';
     case 'MAP':
-      return 'table';
+      return 'map';
     default:
       return null;
   }
