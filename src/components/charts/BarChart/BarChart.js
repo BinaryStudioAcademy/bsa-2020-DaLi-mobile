@@ -7,6 +7,7 @@ import {
   VictoryTheme,
   VictoryLine,
   VictoryAxis,
+  VictoryLabel,
 } from 'victory-native';
 import {ChartLegend} from '../ChartComponents';
 import * as ChartHelper from '../../../helpers/chartHelper';
@@ -34,6 +35,7 @@ const BarChart = (props) => {
   const bars = YAxis.map((YAxisKey, index) => {
     const bardData = ChartHelper.createChartData(data, XAxis, YAxisKey);
     const yMinMax = ChartHelper.findYMinMax(bardData);
+    const showValues = config.display.showDataPointsValues;
     return (
       <VictoryBar
         style={{data: {width: barWidth}}}
@@ -41,6 +43,10 @@ const BarChart = (props) => {
         data={bardData}
         domainPadding={config.display.stacked ? barPadding : 0}
         domain={{y: yMinMax}}
+        labels={({datum}) => (showValues ? datum.y : null)}
+        labelComponent={
+          <VictoryLabel style={styles.yAxisItemValue} renderInPortal dy={-10} />
+        }
       />
     );
   });

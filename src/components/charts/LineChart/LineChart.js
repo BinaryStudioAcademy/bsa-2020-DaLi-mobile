@@ -6,6 +6,7 @@ import {
   VictoryTheme,
   VictoryLine,
   VictoryAxis,
+  VictoryLabel,
 } from 'victory-native';
 import {ChartLegend} from '../ChartComponents';
 import * as ChartHelper from '../../../helpers/chartHelper';
@@ -33,11 +34,16 @@ const LineChart = (props) => {
   const lines = config.axisData.YAxis.key.map((YAxisKey, index) => {
     const lineData = ChartHelper.createChartData(data, XAxis, YAxisKey);
     const yMinMax = ChartHelper.findYMinMax(lineData);
+    const showValues = config.display.showDataPointsValues;
     return (
       <VictoryLine
         key={`${id} - ${index}`}
         data={lineData}
         domain={{y: yMinMax}}
+        labels={({datum}) => (showValues ? datum.y : null)}
+        labelComponent={
+          <VictoryLabel style={styles.yAxisItemValue} renderInPortal dy={-10} />
+        }
         interpolation={lineTypes[config.display.lineType[index]]}
       />
     );

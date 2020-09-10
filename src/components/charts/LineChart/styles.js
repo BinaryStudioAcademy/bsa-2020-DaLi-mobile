@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 12,
   },
+  yAxisItemValue: {
+    fontSize: 8,
+  },
 });
 
 export default styles;
