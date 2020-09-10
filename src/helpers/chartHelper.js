@@ -14,7 +14,7 @@ export const createGoalLineData = (data, yAxisValue) => {
 export const createChartData = (data, xAxis, yAxis) => {
   return data.map((item, index) => ({
     x: `${index + 1}.${item[xAxis]}`,
-    y: item[yAxis],
+    y: Number(item[yAxis]),
   }));
 };
 
@@ -28,5 +28,5 @@ export function findYMinMax(arr) {
     max = v > max ? v : max;
   }
 
-  return [min, max * 1.2];
+  return [min * 0.1, max * 1.2];
 }
